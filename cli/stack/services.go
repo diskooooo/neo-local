@@ -4,6 +4,7 @@ package stack
 func Services() []Service {
 	return []Service{
 		NewFaucet(),
+		NewNeoScanAPI(),
 		NewPostgres(),
 		NewPrivateNet(),
 	}
