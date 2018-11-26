@@ -5,7 +5,7 @@ import (
 	"github.com/docker/go-connections/nat"
 )
 
-// NewNeoScanSync creates a new service for the egistry.gitlab.com/cityofzion/neo-scan/sync:latest image.
+// NewNeoScanAPI creates a new service for the egistry.gitlab.com/cityofzion/neo-scan/sync:latest image.
 func NewNeoScanAPI() Service {
 	return Service{
 		Author: "cityofzion",
@@ -24,9 +24,18 @@ func NewNeoScanAPI() Service {
 				"4000/tcp": {},
 			},
 		},
-		DependsOn: []string{"postgres", "neo-privatenet", "notifications-server"},
+		DependsOn: []string{
+			"postgres",
+			"neo-privatenet",
+			"notifications-server",
+		},
 		HostConfig: &container.HostConfig{
-			Links: []string{"neo-privatenet:30333", "neo-privatenet:30334", "neo-privatenet:30335", "neo-privatenet:30336"},
+			Links: []string{
+				"neo-privatenet:30333",
+				"neo-privatenet:30334",
+				"neo-privatenet:30335",
+				"neo-privatenet:30336",
+			},
 			PortBindings: map[nat.Port][]nat.PortBinding{
 				"4000/tcp": {
 					{
