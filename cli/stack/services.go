@@ -9,10 +9,10 @@ func Services() ([]Service, error) {
 
 	return []Service{
 		NewFaucet(),
-    NewNeoScanSync()
-    NewPostgres(),
-    neoPython,
-    NewPrivateNet(),
+		NewNeoScanSync(),
+		NewPostgres(),
+		neoPython,
+		NewPrivateNet(),
 	}, nil
 }
 

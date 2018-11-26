@@ -24,9 +24,18 @@ func NewNeoScanSync() Service {
 				"4002/tcp": {},
 			},
 		},
-		DependsOn: []string{"postgres", "neo-privatenet", "notifications-server"},
+		DependsOn: []string{
+			"postgres",
+			"neo-privatenet",
+			"notifications-server",
+		},
 		HostConfig: &container.HostConfig{
-			Links:      []string{"neo-privatenet:30333", "neo-privatenet:30334", "neo-privatenet:30335", "neo-privatenet:30336"},
+			Links: []string{
+				"neo-privatenet:30333",
+				"neo-privatenet:30334",
+				"neo-privatenet:30335",
+				"neo-privatenet:30336",
+			},
 			Privileged: false,
 		},
 		Image: "registry.gitlab.com/cityofzion/neo-scan/sync",
