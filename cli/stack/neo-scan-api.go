@@ -11,13 +11,13 @@ func NewNeoScanAPI() Service {
 		Author: "cityofzion",
 		ContainerConfig: &container.Config{
 			Env: []string{
+				"DB_DATABASE=neoscan_prodv",
+				"DB_HOSTNAME=postgres",
+				"DB_PASSWORD=postgres",
+				"DB_USERNAME=postgres",
 				"NEO_NOTIFICATIONS_SERVER='http://notifications-server:8080/v1'",
 				"NEO_SEEDS='http://neo-privatenet:30333;http://neo-privatenet:30334;http://neo-privatenet:30335;http://neo-privatenet:30336'",
 				"PORT=4000",
-				"DB_HOSTNAME=postgres",
-				"DB_USERNAME=postgres",
-				"DB_PASSWORD=postgres",
-				"DB_DATABASE=neoscan_prodv",
 				"REPLACE_OS_VARS=true",
 			},
 			ExposedPorts: map[nat.Port]struct{}{
