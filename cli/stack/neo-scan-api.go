@@ -25,9 +25,9 @@ func NewNeoScanAPI() Service {
 			},
 		},
 		DependsOn: []string{
-			"postgres",
 			"neo-privatenet",
 			"notifications-server",
+			"postgres",
 		},
 		HostConfig: &container.HostConfig{
 			Links: []string{
