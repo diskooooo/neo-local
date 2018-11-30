@@ -11,13 +11,13 @@ func NewNeoScanSync() Service {
 		Author: "cityofzion",
 		ContainerConfig: &container.Config{
 			Env: []string{
+				"DB_DATABASE=neoscan_prodv",
+				"DB_HOSTNAME=postgres",
+				"DB_PASSWORD=postgres",
+				"DB_USERNAME=postgres",
 				"NEOSCAN=neo-scan-api:4000",
 				"NEO_NOTIFICATIONS_SERVER='http://notifications-server:8080/v1'",
 				"NEO_SEEDS='http://neo-privatenet:30333;http://neo-privatenet:30334;http://neo-privatenet:30335;http://neo-privatenet:30336'",
-				"DB_HOSTNAME=postgres",
-				"DB_USERNAME=postgres",
-				"DB_PASSWORD=postgres",
-				"DB_DATABASE=neoscan_prodv",
 				"REPLACE_OS_VARS=true",
 			},
 			ExposedPorts: map[nat.Port]struct{}{
@@ -25,9 +25,9 @@ func NewNeoScanSync() Service {
 			},
 		},
 		DependsOn: []string{
-			"postgres",
 			"neo-privatenet",
 			"notifications-server",
+			"postgres",
 		},
 		HostConfig: &container.HostConfig{
 			Links: []string{
