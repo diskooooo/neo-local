@@ -76,7 +76,6 @@ services:
     - notifications-server
     environment:
       NEO_NOTIFICATIONS_SERVER: "http://${NOTIFICATIONS_SERVER}:8080/v1"
-
       NEO_SEEDS: "http://neo-cli-privatenet-1:30333;http://neo-cli-privatenet-2:30334;http://neo-cli-privatenet-3:30335;http://neo-cli-privatenet-4:30336"
       PORT: 4000
       DB_HOSTNAME: postgres
@@ -91,7 +90,16 @@ services:
       - "neo-cli-privatenet-3:30335"
       - "neo-cli-privatenet-4:30336"
     ports:
-    - "4000:4000"
+      - "4000:4000"
+    restart: always
+    healthcheck:
+      test: ["CMD", "bash", "-c", "exec 6<>/dev/tcp/127.0.0.1/4000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    labels:
+      autoheal: "true"
 
   neo-scan-sync:
     container_name: neo-scan-sync
@@ -129,7 +137,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - "./notifications-server.config.json:/neo-python/custom-config.json"
+      - "./notifications-server/notifications-server.config.json:/neo-python/custom-config.json"
 
   postgres:
     container_name: postgres
@@ -140,3 +148,14 @@ services:
     expose:
       - 5432
     image: library/postgres:10.5
+
+  autoheal:
+    restart: always
+    image: willfarrell/autoheal
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+      - AUTOHEAL_CONTAINER_LABEL=autoheal
+      - AUTOHEAL_INTERVAL=5
+      - DOCKER_SOCK=/var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
