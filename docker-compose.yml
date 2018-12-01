@@ -137,7 +137,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - "./notifications-server/notifications-server.config.json:/neo-python/custom-config.json"
+      - "./notifications-server.config.json:/neo-python/custom-config.json"
 
   postgres:
     container_name: postgres
