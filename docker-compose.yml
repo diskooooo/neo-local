@@ -158,3 +158,15 @@ services:
       - DOCKER_SOCK=/var/run/docker.sock
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - neo-faucet
+      - neo-cli-privatenet-1
+      - neo-cli-privatenet-2
+      - neo-cli-privatenet-3
+      - neo-cli-privatenet-4
+      - neo-python
+      - neo-scan-api
+      - neo-scan-sync
+      - notifications-server
+      - postgres
+
