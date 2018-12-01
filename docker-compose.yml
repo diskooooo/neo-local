@@ -1,5 +1,5 @@
 ---
-version: "3"
+version: "3.4"
 services:
   neo-faucet:
     container_name: neo-faucet
