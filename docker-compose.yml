@@ -150,6 +150,7 @@ services:
     image: library/postgres:10.5
 
   autoheal:
+    container_name: neo-local_autoheal
     restart: always
     image: willfarrell/autoheal
     environment:
