@@ -153,7 +153,6 @@ services:
     restart: always
     image: willfarrell/autoheal
     environment:
-      - AUTOHEAL_CONTAINER_LABEL=all
       - AUTOHEAL_CONTAINER_LABEL=autoheal
       - AUTOHEAL_INTERVAL=5
       - DOCKER_SOCK=/var/run/docker.sock
