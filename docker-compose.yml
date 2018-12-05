@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 services:
   autoheal:
     container_name: neo-local_autoheal
@@ -130,7 +130,7 @@ services:
       - '8080:8080'
     volumes:
       - './notifications-server.config.json:/neo-python/custom-config.json'
-      
+
   postgres:
     container_name: postgres
     environment:
