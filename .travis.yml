@@ -5,6 +5,10 @@ go:
 
 sudo: required
 
+os:
+  - linux
+  - osx
+
 services:
   - docker
 
