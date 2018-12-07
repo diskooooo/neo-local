@@ -10,8 +10,9 @@ os:
   - osx
 
 env:
-  - INSTALL_DIRECTORY=$GOPATH/bin/dep
-  - DEP_RELEASE_TAG=v0.5.0
+  global:
+    - INSTALL_DIRECTORY=$GOPATH/bin/dep
+    - DEP_RELEASE_TAG=v0.5.0
 
 services:
   - docker
