@@ -25,6 +25,7 @@ notifications:
     on_failure: always
 
 before_install:
+  - mkdir $GOPATH/bin/dep
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
 
