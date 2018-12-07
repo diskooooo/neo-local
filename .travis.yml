@@ -24,6 +24,7 @@ notifications:
     on_failure: always
 
 before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir $GOPATH/bin; fi
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
 
