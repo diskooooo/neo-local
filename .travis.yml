@@ -9,6 +9,10 @@ os:
   - linux
   - osx
 
+env:
+  - INSTALL_DIRECTORY=$GOPATH/bin/dep
+  - DEP_RELEASE_TAG=v0.5.0
+
 services:
   - docker
 
@@ -20,7 +24,7 @@ notifications:
     on_failure: always
 
 before_install:
-  - curl -L -s https://github.com/golang/dep/releases/download/v0.5.0/dep-linux-amd64 -o $GOPATH/bin/dep
+  - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
 
 install:
