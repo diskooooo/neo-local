@@ -11,7 +11,7 @@ os:
 
 env:
   global:
-    - INSTALL_DIRECTORY=$GOPATH/bin/dep
+    - INSTALL_DIRECTORY=$GOPATH/bin
     - DEP_RELEASE_TAG=v0.5.0
 
 services:
@@ -25,7 +25,6 @@ notifications:
     on_failure: always
 
 before_install:
-  - mkdir $GOPATH/bin/dep
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
 
