@@ -27,8 +27,6 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then mkdir $GOPATH/bin; fi
   - curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
   - chmod +x $GOPATH/bin/dep
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install caskroom/cask/brew-cask; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew cask install docker-toolbox; fi
 
 install:
   - cd ./cli
@@ -37,4 +35,4 @@ install:
 
 # Script step is run as part of a shell script as it requires a conditional.
 script:
-  ./scripts/travis.sh
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./scripts/travis.sh; fi
