@@ -5,7 +5,8 @@ import (
 	"github.com/docker/go-connections/nat"
 )
 
-// NewNeoScanSync creates a new service for the egistry.gitlab.com/cityofzion/neo-scan/sync:latest image.
+// NewNeoScanSync creates a new service for the
+// registry.gitlab.com/cityofzion/neo-scan/sync:latest image.
 func NewNeoScanSync() Service {
 	return Service{
 		Author: "cityofzion",
