@@ -26,7 +26,7 @@ func NewAutoheal() Service {
 		},
 		//DependsOn: to be set after PR merged
 		Image: "willfarrell/autoheal",
-		Name:  "neo-local_autoheal",
+		Name:  "autoheal",
 		Tag:   "10.5",
 	}
 }
